@@ -31,12 +31,19 @@
     .faq-code pre {
       padding-top: 1em;
     }
+    .faq-options {
+      margin: 1em 0px;
+    }
     .faq-options li {
       list-style: none;
       border: 1px solid #eee;
       border-radius: 6px;
-      margin: 10px 0px;
-      padding: 10px;
+      margin: 1em 0px;
+      padding: 1.5em;
+    }
+    .faq-options-index {
+      font-size: 30px;
+      margin-right: 12px;
     }
   </style>
 </head>
@@ -63,7 +70,7 @@
     </span>
   </div>
   <div id="options" class="faq-options">
-    <ul><li>A:&nbsp;<code>Lydia</code>&nbsp;and&nbsp;<code>undefined</code></li><li>B:&nbsp;<code>Lydia</code>&nbsp;and&nbsp;<code>ReferenceError</code></li><li>C:&nbsp;<code>ReferenceError</code>&nbsp;and&nbsp;<code>21</code></li><li>D:&nbsp;<code>undefined</code>&nbsp;and&nbsp;<code>ReferenceError</code></li></ul>
+    <ul><li><code>Lydia</code>&nbsp;and&nbsp;<code>undefined</code></li><li><code>Lydia</code>&nbsp;and&nbsp;<code>ReferenceError</code></li><li><code>ReferenceError</code>&nbsp;and&nbsp;<code>21</code></li><li><code>undefined</code>&nbsp;and&nbsp;<code>ReferenceError</code></li></ul>
   </div>
 
   <script>
@@ -84,7 +91,13 @@
       html = html.split('\n').filter(s => s.trim());
       console.log(html);
       
-      let option = html.map( item => `<li>${item}</li>`).join("");
+      let option = html.map( (item,index) => {
+        const start = 65;
+        return `<li>
+          <span class="faq-options-index">${String.fromCharCode(start+index)}</span>
+          <span>${item}</span>
+        </li>`
+      }).join("");
       options.innerHTML = option;
     }
     
