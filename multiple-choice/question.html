@@ -6,7 +6,6 @@
   <title>Document</title>
   <style>
     .faq-question {
-      color: #6a737d;
       font-size: 20px !important;
     }
     .faq-code {
@@ -40,6 +39,9 @@
       border-radius: 6px;
       margin: 1em 0px;
       padding: 1.5em;
+    }
+    .faq-options li:hover {
+      background-color: #e6eff8;
     }
     .faq-options-index {
       font-size: 30px;
@@ -94,13 +96,16 @@
       let option = html.map( (item,index) => {
         const start = 65;
         return `<li>
+          <input type="radio" name="option"></input>
           <span class="faq-options-index">${String.fromCharCode(start+index)}</span>
           <span>${item}</span>
         </li>`
       }).join("");
       options.innerHTML = option;
     }
-    
+    function optionClick() {
+      
+    }
 
     // function clearStyle(e) {
     //   e.preventDefault();
